@@ -42,6 +42,11 @@ namespace TodoListWebsite.Page
             driver.FindElement(deleteBtn).Click();
         }
 
+        public void clearTodo()
+        {
+            driver.FindElement(clearCompleted).Click();
+        }
+
         public IWebElement getFirstTodo()
         {
             return driver.FindElement(firstTodo);
@@ -56,6 +61,7 @@ namespace TodoListWebsite.Page
         {
             return driver.FindElement(clearCompleted);
         }
+
 
         public IWebElement getItemsLeftQuantity()
         {

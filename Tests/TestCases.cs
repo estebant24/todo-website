@@ -10,7 +10,7 @@ namespace TodoListWebsite.Tests
         //* Positive Test Cases *//
        
         [Test]
-        public void User_IsAbleToAddATask_And_IsVisibleOnTheList()
+        public void User_IsAble_ToAddATask_And_IsVisibleOnTheList()
         {
             var todoPage = new TodoPage(driver);
             todoPage.addTodo("Walk the dog");
@@ -18,7 +18,7 @@ namespace TodoListWebsite.Tests
         }
 
         [Test]
-        public void User_IsAbleToCompleteATodo()
+        public void User_IsAble_ToCompleteATodo()
         {
             var todoPage = new TodoPage(driver);
             todoPage.addTodo("Wash the car");
@@ -26,6 +26,8 @@ namespace TodoListWebsite.Tests
             todoPage.getToggle().Click();
             todoPage.getClearCompleted();
             Assert.IsTrue(todoPage.getClearCompleted().Displayed); // Assert Todo was deleted by validating "Clear Completed" is displayed
+            todoPage.clearTodo();
+            Assert.IsTrue(todoPage.isTodoListPresent(driver).Equals(false)); // Assert the todo list isn't displayed anymore
         }
 
         [Test]
@@ -54,11 +56,11 @@ namespace TodoListWebsite.Tests
         //* Negative Test Cases *//
         
         [Test]
-        public void User_IsNotAble_ToAddEmptyTask()
+        public void User_IsNotAble_ToAddEmptyTodo()
         {
             var todoPage = new TodoPage(driver);
-            todoPage.addTodo("");
-            Assert.IsTrue(todoPage.isTodoListPresent(driver).Equals(false)); // Assert the Todo list element isnt found on screen
+            todoPage.addTodo("   ");
+            Assert.IsTrue(todoPage.isTodoListPresent(driver).Equals(false)); // Assert Todo list element isn't found on screen after entering only space as text and pressing "Enter" key
         }
 
         [Test]

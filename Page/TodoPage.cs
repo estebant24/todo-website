@@ -62,7 +62,6 @@ namespace TodoListWebsite.Page
             return driver.FindElement(clearCompleted);
         }
 
-
         public IWebElement getItemsLeftQuantity()
         {
             return driver.FindElement(itemsLeft);

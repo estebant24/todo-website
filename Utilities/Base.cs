@@ -20,6 +20,7 @@ namespace TodoListWebsite.Utilities
         public void ReportSetup()
 
         {
+            // Setting up the index.html test report
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             String reportPath = projectDirectory + "//index.html";
@@ -34,6 +35,7 @@ namespace TodoListWebsite.Utilities
         [SetUp]
         public void Setup()
         {
+            // Setting up the driver: Chrome browser, Url, Maximizing the window & waiting for the header to be present on screen
             test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
             new WebDriverManager.DriverManager().SetUpDriver(new ChromeConfig());
             driver = new ChromeDriver();
@@ -46,6 +48,7 @@ namespace TodoListWebsite.Utilities
         [TearDown]
         public void AfterTest()
         {
+            // Adding the current test status result to the report
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stackTrace = TestContext.CurrentContext.Result.StackTrace;
             if (status == TestStatus.Failed)

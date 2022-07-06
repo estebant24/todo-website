@@ -10,7 +10,7 @@ namespace TodoListWebsite.Tests
         //* Positive Test Cases *//
        
         [Test]
-        public void User_IsAble_ToAddATask_And_IsVisibleOnTheList()
+        public void User_IsAble_ToAddATodo_And_IsVisibleOnTheList()
         {
             var todoPage = new TodoPage(driver);
             todoPage.addTodo("Walk the dog");
@@ -34,7 +34,7 @@ namespace TodoListWebsite.Tests
         }
 
         [Test]
-        public void User_IsAble_ToAdd3Tasks_And_DeleteOne()
+        public void User_IsAble_ToAdd3Todos_And_DeleteOne()
         {
             var todoPage = new TodoPage(driver);
             todoPage.addTodo("Walk the dog");
@@ -49,7 +49,7 @@ namespace TodoListWebsite.Tests
         }
 
         [Test]
-        public void User_IsAble_ToAdd_And_EditATask()
+        public void User_IsAble_ToAdd_And_EditATodo()
         {
             var todoPage = new TodoPage(driver);
             todoPage.addTodo("Do Homework");

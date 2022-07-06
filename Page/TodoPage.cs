@@ -18,7 +18,9 @@ namespace TodoListWebsite.Page
         By toggle = By.ClassName("toggle");
         By clearCompleted = By.ClassName("clear-completed");
         By header = By.ClassName("header");
-                
+        By editBar = By.ClassName("edit");
+        By firstTodoInList = By.XPath("//label[text()='Walk the dog']");
+
         //* Methods *//
         public TodoPage(IWebDriver driver)
         {
@@ -69,12 +71,12 @@ namespace TodoListWebsite.Page
 
         public IWebElement getFirstTodoInList()
         {
-            return driver.FindElement(todoList).FindElement(By.XPath("//label[text()='Walk the dog']"));
+            return driver.FindElement(todoList).FindElement(firstTodoInList);
         }
 
         public void editTodo(string newTodo)
         {
-            IWebElement edit = driver.FindElement(By.ClassName("edit"));
+            IWebElement edit = driver.FindElement(editBar);
             edit.SendKeys(Keys.Control + "a");
             String newtext = newTodo;
             edit.SendKeys(newtext);
@@ -83,7 +85,6 @@ namespace TodoListWebsite.Page
 
         public void deleteFirstTodo()
         {
-            Thread.Sleep(1000);
             Actions action = new Actions(driver);
             action.MoveToElement(getFirstTodoInList()).Build().Perform();
             deleteTodo();
@@ -93,7 +94,7 @@ namespace TodoListWebsite.Page
         {
             Actions action = new Actions(driver);
             action.DoubleClick(getFirstTodo()).Build().Perform();
-            IWebElement edit = driver.FindElement(By.ClassName("edit"));
+            IWebElement edit = driver.FindElement(editBar);
             edit.Click();
         }
 
